@@ -21,10 +21,8 @@ public class Main {
 	 */
 
 
-        Queue<Presupuesto> presupuestos = new LinkedList<>();
-        List<Usuario>usuarios = new ArrayList<>();
-       // Producto p = new Producto ();
-        //Servicio s = new  Servicio();
+       Queue<Presupuesto> presupuestos = new LinkedList<>();
+       List<Usuario>usuarios = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
         int opcion = sc.nextInt();
