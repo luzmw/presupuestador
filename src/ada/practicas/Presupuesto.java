@@ -69,6 +69,7 @@ public class Presupuesto implements Item{
 
 
         }else {
+            //presupuesto.calcularTotal();
 
 
         }
