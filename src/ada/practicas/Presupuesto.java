@@ -71,13 +71,12 @@ public class Presupuesto implements Item{
         }else {
             //presupuesto.calcularTotal();
 
-
         }
 
 
-    }
 
-    public void eliminarElemento() {
+
+        public void eliminarElemento() {
         System.out.println("Ingrese el código del elemento que desea eliminar");
         int codigo = scanner.nextInt();
         items.remove(codigo);

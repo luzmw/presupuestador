@@ -25,9 +25,7 @@ public class Main {
        List<Usuario>usuarios = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
-        int opcion = sc.nextInt();
-
-
+        int opcion = 0;
         do {
             System.out.println("ingrese su nombre de usuario");
             Usuario u = new Usuario();
@@ -35,10 +33,10 @@ public class Main {
             u.setNombreUsuario(nombreUsuario);
             System.out.println("Bienvenido al presupuestador "+u.getNombreUsuario());
             System.out.println("Si desea crear un presupuesto ingrese 1, para salir ingrese 0");
-            u.crearPresupuesto();
-
+            opcion = sc.nextInt();//condicion de salida
+            if(opcion==1)
+                u.crearPresupuesto();
         }while (opcion!=0);
-
 
     }
 }
