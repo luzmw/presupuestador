@@ -4,8 +4,8 @@ public class Producto extends Elemento implements Item{
    private Double precioUnitario;
 
 
-   public Producto(String nombre, String descripcion, Integer cantidad, Double precioUnitario) {
-      super(nombre, descripcion, cantidad);
+   public Producto(String nombre, String descripcion, Integer cantidad, int codigoElemento, Double precioUnitario) {
+      super(nombre, descripcion, cantidad, codigoElemento);
       this.precioUnitario = precioUnitario;
    }
 
@@ -29,6 +29,11 @@ public class Producto extends Elemento implements Item{
    @Override
    public void mostrarDetalles() {
       System.out.println(nombre+descripcion+precioUnitario+this.calcularTotal());
+
+   }
+
+   @Override
+   public void modificarItem() {
 
    }
 }

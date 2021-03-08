@@ -4,10 +4,9 @@ public class Servicio  extends Elemento implements  Item{
     private Double valorHora;
     private String profesional;
 
-    public Servicio(String nombre, String descripcion, Integer cantidad, Double valorHora, String profesional) {
-        super(nombre, descripcion, cantidad);
+    public Servicio(String nombre, String descripcion, Integer cantidad, int codigoElemento, Double valorHora) {
+        super(nombre, descripcion, cantidad, codigoElemento);
         this.valorHora = valorHora;
-        this.profesional= profesional;
     }
 
     public Double getValorHora() {
@@ -35,6 +34,11 @@ public class Servicio  extends Elemento implements  Item{
     @Override
     public void mostrarDetalles() {
         System.out.println(nombre+ descripcion + this.calcularTotal());
+
+    }
+
+    @Override
+    public void modificarItem() {
 
     }
 }

@@ -6,10 +6,12 @@ public class Elemento {
     protected Integer cantidad;
     protected int codigoElemento;
 
-    public Elemento(String nombre, String descripcion, Integer cantidad) {
+    public Elemento(String nombre, String descripcion, Integer cantidad, int codigoElemento) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
+        this.codigoElemento= codigoElemento;
+
     }
 
     public Elemento() {
@@ -46,4 +48,5 @@ public class Elemento {
     public void setCodigoElemento(int codigoElemento) {
         this.codigoElemento = codigoElemento;
     }
+
 }

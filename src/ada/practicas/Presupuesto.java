@@ -10,26 +10,7 @@ public class Presupuesto implements Item{
     private Scanner scanner= new Scanner(System.in);
 
 
-
-
-    @Override
-    public Double calcularTotal() {
-            return null;
-    }
-
-    @Override
-    public String toString() {
-        return "Presupuesto{" +
-                "productosYServicios=" + items +
-                ", totalPresupuesto=" + totalPresupuesto +
-                '}';
-    }
-
-    @Override
-    public void mostrarDetalles() {
-        items.toString();
-
-
+    public Presupuesto() {
     }
 
     public List<Item> getItems() {
@@ -44,43 +25,83 @@ public class Presupuesto implements Item{
         return totalPresupuesto;
     }
 
-    public void setTotalPresupuesto(Double totalPresupuesto) {
-        this.totalPresupuesto = totalPresupuesto;
+
+    @Override
+    public Double calcularTotal() {
+        Double total=0.00;
+        for (Item i :items){
+            total+= i.calcularTotal();
+        }
+        return total;
     }
-    public void agregarElemento(){
-        boolean deseaAgregarMas = true;
-        if (deseaAgregarMas) {
-            Producto unp = new Producto();
-            System.out.println("Ingrese  nombre del porudcto/servicio");
-            String nombre = scanner.nextLine();
-            unp.setNombre(nombre);
 
-            System.out.println("Ingrese descripcion del porudcto/servicio");
-            String descripcion = scanner.nextLine();
-            unp.setDescripcion(descripcion);
-
-            System.out.println("Ingrese cantidad  del porudcto/servicio");
-            Integer cantidad = scanner.nextInt();
-            unp.setCantidad(cantidad);
-
-            //agregar a la lista de items
-            items.add(unp);
-
-
-
-        }else {
-            //presupuesto.calcularTotal();
-
+    @Override
+    public void mostrarDetalles() {
+        for(Item item: items){
+            System.out.println("Detalle:"+getItems());
         }
 
-
-
-
-        public void eliminarElemento() {
-        System.out.println("Ingrese el código del elemento que desea eliminar");
-        int codigo = scanner.nextInt();
-        items.remove(codigo);
     }
 
+    @Override
+    public void modificarItem() {
+        System.out.println("ingrese el codigo y el itemq ue desea modificar");
+        int codigoElemento = scanner.nextInt();
+        Item unitem = items.get(codigoElemento);
+        if (unitem.getClass().getSimpleName().equalsIgnoreCase("Producto")){
+            Producto p = (Producto) unitem;
+            //modificaciones al producto
+            items.set(codigoElemento,p);
+        }else{
+            Servicio s = (Servicio) unitem;
+            //modificaciones al servicio
+            items.set(codigoElemento,s);
+        }
 
+    }
+
+    public void agregarElemento() {
+
+        Producto unp = new Producto();
+        System.out.println("Ingrese  nombre del porudcto/servicio");
+        String nombre = scanner.nextLine();
+        unp.setNombre(nombre);
+
+        System.out.println("Ingrese descripcion del porudcto/servicio");
+        String descripcion = scanner.nextLine();
+        unp.setDescripcion(descripcion);
+
+        System.out.println("Ingrese el código del producto/servicio");
+        int codigoElemento= scanner.nextInt();
+        unp.setCodigoElemento(codigoElemento);
+
+        System.out.println("Ingrese cantidad  del porudcto/servicio");
+        Integer cantidad = scanner.nextInt();
+        unp.setCantidad(cantidad);
+
+        //agregar a la lista de items
+        items.add(unp);
+
+        System.out.println("se agrego "+getItems());
+        System.out.println("desea agregar mas elementos al presupuesto? si =1 no = 0");
+        Integer agrgarElemento = scanner.nextInt();
+        //TODO validar opciones
+        if (agrgarElemento == 1) {
+            System.out.println("Ingrese el nombre del producto/servicio");
+
+        } else {
+           //salir
+        }
+    }
+
+    public void eliminarElemento() {
+        //lista de codigos?
+        System.out.println("Ingrese el código del producto7servicio que desee eliminar");
+        int codigoElemento = scanner.nextInt();
+        items.remove(codigoElemento);
+
+    }
+
+    public void modificarElemento() {
+    }
 }

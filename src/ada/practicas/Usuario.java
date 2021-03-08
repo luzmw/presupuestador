@@ -33,19 +33,27 @@ public class Usuario {
 
     void crearPresupuesto(){
         Presupuesto presupuesto = new Presupuesto();
-        System.out.println("Agregar elementos 2 . modificar 3, eliminar 4, mostrar detalle 5,  calcular total 6");
-        int opcion= scanner.nextInt();
-        switch (opcion){
-           // case 2: presupuesto.agregarElemento();
-           // break;
-            case 3: presupuesto.eliminarElemento();
-            break;
-            //case 4: presupuesto.modificarElemento();
-            case 5: presupuesto.mostrarDetalles();
-            break;
-            case 6: presupuesto.calcularTotal();
-            break;
-        }
-
+        int opcion=0;
+        do {
+            System.out.println("Para Agregar elementos 2 . modificar 3, eliminar 4, mostrar detalle 5,  calcular total 6");
+            opcion = scanner.nextInt();
+            switch (opcion) {
+                case 2:
+                    presupuesto.agregarElemento();
+                    break;
+                case 3:
+                    presupuesto.eliminarElemento();
+                    break;
+                case 4:
+                    presupuesto.modificarElemento();
+                    break;
+                case 5:
+                    presupuesto.mostrarDetalles();
+                    break;
+                case 6:
+                    presupuesto.calcularTotal();
+                    break;
+            }
+        }while (opcion!=0);
     }
 }
