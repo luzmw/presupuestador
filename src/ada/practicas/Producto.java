@@ -22,13 +22,14 @@ public class Producto extends Elemento implements Item{
 
    @Override
    public Double calcularTotal() {
-      Double totalProducto = precioUnitario*cantidad;
+      precioUnitario= 0.00;
+      Double totalProducto = precioUnitario * cantidad;
       return totalProducto;
    }
 
    @Override
    public void mostrarDetalles() {
-      System.out.println(nombre+descripcion+precioUnitario+this.calcularTotal());
+      System.out.println(nombre + descripcion + precioUnitario + this.calcularTotal());
 
    }
 

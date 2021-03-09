@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Usuario {
     private String nombreUsuario;
-    private  Presupuesto presupuesto;
+    private Presupuesto presupuesto;
     private Scanner scanner = new Scanner(System.in);
 
-    public Usuario(String nombreUsuario, Presupuesto presupuesto) {
+    public Usuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
-        this.presupuesto = presupuesto;
+       this. presupuesto = new Presupuesto();
     }
 
     public Usuario() {
@@ -27,16 +27,14 @@ public class Usuario {
         return presupuesto;
     }
 
-    public void setPresupuesto(Presupuesto presupuesto) {
-        this.presupuesto = presupuesto;
-    }
 
-    void crearPresupuesto(){
-        Presupuesto presupuesto = new Presupuesto();
-        int opcion=0;
+    void crearPresupuesto() {
+        Presupuesto presupuesto= new Presupuesto();
+        int opcion = 0;
+
         do {
             System.out.println("Para Agregar elementos 2 . modificar 3, eliminar 4, mostrar detalle 5,  calcular total 6");
-            opcion = scanner.nextInt();
+            opcion = Integer.parseInt(scanner.nextLine());
             switch (opcion) {
                 case 2:
                     presupuesto.agregarElemento();
@@ -54,6 +52,6 @@ public class Usuario {
                     presupuesto.calcularTotal();
                     break;
             }
-        }while (opcion!=0);
+        } while (opcion != 0);
     }
 }

@@ -1,14 +1,18 @@
 package ada.practicas;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Presupuesto implements Item{
-    private List<Item> items;
+    private List<Item> items= new ArrayList<>();
     private Double totalPresupuesto;
-    private Scanner scanner= new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
+    public Presupuesto(List<Item> items) {
+        this.items = new ArrayList<>();
+    }
 
     public Presupuesto() {
     }
@@ -29,39 +33,42 @@ public class Presupuesto implements Item{
     @Override
     public Double calcularTotal() {
         Double total=0.00;
-        for (Item i :items){
-            total+= i.calcularTotal();
+        for (Item i : items) {
+            total += i.calcularTotal();
         }
         return total;
     }
 
     @Override
     public void mostrarDetalles() {
-        for(Item item: items){
-            System.out.println("Detalle:"+getItems());
+        List<Item>items = new ArrayList<>();
+        for (Item item : items) {
+            System.out.println("Detalle:" + item);
         }
 
     }
 
     @Override
     public void modificarItem() {
-        System.out.println("ingrese el codigo y el itemq ue desea modificar");
+        List<Item>items= new ArrayList<>();
+        System.out.println("ingrese servicio o preducto  y el código");
         int codigoElemento = scanner.nextInt();
         Item unitem = items.get(codigoElemento);
-        if (unitem.getClass().getSimpleName().equalsIgnoreCase("Producto")){
+        if (unitem.getClass().getSimpleName().equalsIgnoreCase("Producto")) {
             Producto p = (Producto) unitem;
             //modificaciones al producto
-            items.set(codigoElemento,p);
-        }else{
+            items.set(codigoElemento, p);
+        } else {
             Servicio s = (Servicio) unitem;
             //modificaciones al servicio
-            items.set(codigoElemento,s);
+            items.set(codigoElemento, s);
         }
 
     }
 
     public void agregarElemento() {
 
+        Presupuesto presupuesto= new Presupuesto();
         Producto unp = new Producto();
         System.out.println("Ingrese  nombre del porudcto/servicio");
         String nombre = scanner.nextLine();
@@ -72,25 +79,33 @@ public class Presupuesto implements Item{
         unp.setDescripcion(descripcion);
 
         System.out.println("Ingrese el código del producto/servicio");
-        int codigoElemento= scanner.nextInt();
+        int codigoElemento = Integer.parseInt(scanner.nextLine());
         unp.setCodigoElemento(codigoElemento);
 
         System.out.println("Ingrese cantidad  del porudcto/servicio");
-        Integer cantidad = scanner.nextInt();
+        Integer cantidad = Integer.parseInt(scanner.nextLine());
         unp.setCantidad(cantidad);
 
+
+        //precio de lista
+        Double precioUnitario=300.00;
+        unp.setPrecioUnitario(precioUnitario);
+
         //agregar a la lista de items
+
         items.add(unp);
 
-        System.out.println("se agrego "+getItems());
+        System.out.println("se agrego ");
+
         System.out.println("desea agregar mas elementos al presupuesto? si =1 no = 0");
-        Integer agrgarElemento = scanner.nextInt();
+        int oopcion = Integer.parseInt(scanner.nextLine());
+
         //TODO validar opciones
-        if (agrgarElemento == 1) {
+        if (oopcion == 1) {
             System.out.println("Ingrese el nombre del producto/servicio");
 
         } else {
-           //salir
+            //salir
         }
     }
 

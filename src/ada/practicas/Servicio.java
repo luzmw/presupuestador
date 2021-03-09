@@ -18,7 +18,7 @@ public class Servicio  extends Elemento implements  Item{
     }
 
     public String getProfesional() {
-       return profesional;
+        return profesional;
     }
 
     public void setProfesional(String profesional) {
@@ -28,12 +28,14 @@ public class Servicio  extends Elemento implements  Item{
 
     @Override
     public Double calcularTotal() {
-        Double totalServicio= valorHora*cantidad;
-        return  totalServicio;    }
+        valorHora=0.00;
+        Double totalServicio = valorHora * cantidad;
+        return totalServicio;
+    }
 
     @Override
     public void mostrarDetalles() {
-        System.out.println(nombre+ descripcion + this.calcularTotal());
+        System.out.println(nombre + descripcion + this.calcularTotal());
 
     }
 

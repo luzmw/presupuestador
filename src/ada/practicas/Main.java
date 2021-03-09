@@ -21,8 +21,8 @@ public class Main {
 	 */
 
 
-       Queue<Presupuesto> presupuestos = new LinkedList<>();
-       List<Usuario>usuarios = new ArrayList<>();
+        List<Presupuesto> presupuestos = new LinkedList<>();
+        List<Usuario> usuarios = new ArrayList<>();
 
 
         Scanner sc = new Scanner(System.in);
@@ -30,14 +30,19 @@ public class Main {
         do {
             System.out.println("ingrese su nombre de usuario");
             Usuario u = new Usuario();
-            String nombreUsuario= sc.nextLine();
+            String nombreUsuario = sc.nextLine();
             u.setNombreUsuario(nombreUsuario);
-            System.out.println("Bienvenido al presupuestador "+u.getNombreUsuario());
+            usuarios.add(u);
+            System.out.println("Bienvenido al presupuestador " + u.getNombreUsuario());
             System.out.println("Si desea crear un presupuesto ingrese 1, para salir ingrese 0");
-            opcion = sc.nextInt();//condicion de salida
-            if(opcion==1)
+            opcion = Integer.parseInt(sc.nextLine());
+            if (opcion == 1)
                 u.crearPresupuesto();
-        }while (opcion!=0);
+        } while (opcion != 0);
+        //mostrar los presupuestos
+        for (Usuario u : usuarios) {
+            System.out.println(u.getNombreUsuario() + " " + u.getPresupuesto());
+        }
 
     }
 }

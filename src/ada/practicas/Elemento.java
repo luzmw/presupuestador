@@ -10,7 +10,7 @@ public class Elemento {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
-        this.codigoElemento= codigoElemento;
+        this.codigoElemento = codigoElemento;
 
     }
 
